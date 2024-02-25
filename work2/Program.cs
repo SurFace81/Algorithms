@@ -18,6 +18,14 @@ class TestClass
         Matrix matrixC = new Matrix(3, 3, new double[] { 2, 2, 2, 1, -3, 0, -4, -1, 3 });
         Matrix matrixD = new Matrix(3, 3, new double[] { 1, -3, 0, 10, 2, 7, 10, 7, 8 });
         printMatrix(matrixC.inv() * matrixD);
+        Console.WriteLine();
+
+
+        // Answer:
+        //  [1, 2, 3][4, 5, 6]
+        Matrix matrixE = new Matrix(2, 2, new double[] { 2, 3, 5, 4 });
+        Matrix matrixF = new Matrix(2, 3, new double[] { 14, 19, 24, 21, 30, 39  });
+        printMatrix(matrixE.inv() * matrixF);
     }
 
     static void printMatrix(double[,] matrix)

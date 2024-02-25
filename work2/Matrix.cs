@@ -16,7 +16,7 @@
             {
                 for (int j = 0; j < m; j++)
                 {
-                    _data[i, j] = values[_rows * i + j];
+                    _data[i, j] = values[_cols * i + j];
                 }
             }
         }
