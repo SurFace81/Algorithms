@@ -123,10 +123,55 @@
             return new Matrix(n - 1, m - 1, minor);
         }
 
-        // Method to calculate inverse matrix
+        // Methods to calculate inverse matrix
         public Matrix inv()
         {
             return adj().transp();
+        }
+
+        public Matrix inv_gauss()
+        {
+            Matrix augmentedMatrix = new Matrix(_rows, _cols * 2, new double[_rows, 2 * _cols]);
+            for (int i = 0; i < _rows; i++)
+            {
+                for (int j = 0; j < _cols; j++)
+                {
+                    augmentedMatrix._data[i, j] = _data[i, j];
+                }
+                augmentedMatrix._data[i, _cols + i] = 1;
+            }
+
+            for (int i = 0; i < _rows; i++)
+            {
+                double pivot = augmentedMatrix._data[i, i];
+                for (int j = 0; j < 2 * _cols; j++)
+                {
+                    augmentedMatrix._data[i, j] /= pivot;
+                }
+
+                for (int j = 0; j < _cols; j++)
+                {
+                    if (i == j) continue;
+
+                    double factor = augmentedMatrix._data[j, i];
+                    for (int k = 0; k < 2 * _cols; k++)
+                    {
+                        augmentedMatrix._data[j, k] -= factor * augmentedMatrix._data[i, k];
+                    }
+                }
+            }
+
+            Matrix result = new Matrix(_rows, _cols, new double[_rows, _cols]);
+
+            for (int i = 0; i < _rows; i++)
+            {
+                for (int j = _cols; j < _cols * 2; j++)
+                {
+                    result._data[i, j - _cols] = augmentedMatrix._data[i, j];
+                }
+            }
+
+            return result;
         }
 
         // Method to get the 2D array representing the matrix

@@ -9,23 +9,26 @@ class TestClass
         //  [-1, 5][1, -1]
         Matrix matrixA = new Matrix(2, 2, new double[] { 3, 7, 2, 8 });
         Matrix matrixB = new Matrix(2, 2, new double[] { 4, 8, 6, 2 });
-        printMatrix(matrixA.inv() * matrixB);
+        //printMatrix(matrixA.inv() * matrixB);
+        printMatrix(matrixA.inv_gauss() * matrixB);
         Console.WriteLine();
 
 
         // Answer:
-        //  [0.58, -1.06, 0.16][-3.14, -1.02, -2.28][3.06, 0.58, 2.12]
-        Matrix matrixC = new Matrix(3, 3, new double[] { 2, 2, 2, 1, -3, 0, -4, -1, 3 });
-        Matrix matrixD = new Matrix(3, 3, new double[] { 1, -3, 0, 10, 2, 7, 10, 7, 8 });
-        printMatrix(matrixC.inv() * matrixD);
+        //  [1, -11, 7][1, 5, -3][0.5, -0.5, 0.5]
+        Matrix matrixC = new Matrix(3, 3, new double[] { 1, 2, -4, 0, 0.5, 3, 0, 0, 2 });
+        Matrix matrixD = new Matrix(3, 3, new double[] { 1, 1, -1, 2, 1, 0, 1, -1, 1 });
+        //printMatrix(matrixC.inv() * matrixD);
+        printMatrix(matrixC.inv_gauss() * matrixD);
         Console.WriteLine();
 
 
         // Answer:
         //  [1, 2, 3][4, 5, 6]
         Matrix matrixE = new Matrix(2, 2, new double[] { 2, 3, 5, 4 });
-        Matrix matrixF = new Matrix(2, 3, new double[] { 14, 19, 24, 21, 30, 39  });
-        printMatrix(matrixE.inv() * matrixF);
+        Matrix matrixF = new Matrix(2, 3, new double[] { 14, 19, 24, 21, 30, 39 });
+        //printMatrix(matrixE.inv() * matrixF);
+        printMatrix(matrixE.inv_gauss() * matrixF);
     }
 
     static void printMatrix(double[,] matrix)
