@@ -6,21 +6,18 @@ namespace Random
     {
         public double randDouble(int seed)
         {
-            for (int i = 0; i < 128; i++)
+            seed *= seed;
+            string f0 = seed.ToString().Substring(2, 4);
+
+            if (f0[0] == '0')
             {
-                seed *= seed;
-                string f0 = seed.ToString().Substring(2, 4);
-
-                if (f0[0] == '0')
-                {
-                    var temp = seed.ToString();
-                    int f1 = Convert.ToInt32(leftShift(temp));
-                    int f2 = Convert.ToInt32(rightShift(temp));
-                    seed = f1 + f2;
-                }
-
-                seed = Convert.ToInt32(seed.ToString().Substring(2, 4));
+                var temp = seed.ToString();
+                int f1 = Convert.ToInt32(leftShift(temp));
+                int f2 = Convert.ToInt32(rightShift(temp));
+                seed = f1 + f2;
             }
+
+            seed = Convert.ToInt32(seed.ToString().Substring(2, 4));
 
             return Convert.ToDouble("0," + seed.ToString());
         }
