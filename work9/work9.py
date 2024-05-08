@@ -24,17 +24,17 @@ def ifft(y):
     return idft / N
 
 
-x = np.linspace(t_min, t_max, 1000)
+x = np.linspace(t_min, t_max, 1024)
 y = signal(x)
 
 # numpy
 start_time = time.time()
-for i in range(1000):
+for i in range(1024):
     dft = np.fft.fft(y)
 time1 = (time.time() - start_time) * 1000
 
 start_time = time.time()
-for i in range(1000):
+for i in range(1024):
     restored = np.fft.ifft(dft)
 time2 = (time.time() - start_time) * 1000
 
