@@ -80,7 +80,7 @@ DFSSearch:
 if_left:
     ; if (n.left != null && !visited.Contains(n.left))
     mov ebx, [eax + 4]
-    cmp ebx, 0xFFFFAA55
+    cmp ebx, 0xFFFFFFFF
     je .not
     mov edx, [eax + 4]
     mov edx, [edx]
@@ -103,7 +103,7 @@ if_left:
 if_right:
     ; if (n.right != null && !visited.Contains(n.right))
     mov ebx, [eax + 8]
-    cmp ebx, 0xFFFFAA55
+    cmp ebx, 0xFFFFFFFF
     je .not
     mov edx, [eax + 8]
     mov edx, [edx]
@@ -128,12 +128,12 @@ if_right:
 printNode:
     mov word [0x7D00], 'n'
     mov ebx, [eax + 4]
-    cmp ebx, 0xFFFFAA55
+    cmp ebx, 0xFFFFFFFF
     jne .next1
     mov ebx, 0x7D00
 .next1:
     mov edx, [eax + 8]
-    cmp edx, 0xFFFFAA55
+    cmp edx, 0xFFFFFFFF
     jne .next2
     mov edx, 0x7D00
 .next2:
@@ -151,28 +151,28 @@ printNode:
 createTree:
     ; Node 9
     mov dword [nodes + 9 * Node_size + Node.val], '7'
-    mov dword [nodes + 9 * Node_size + Node.left], 0xFFFFAA55
-    mov dword [nodes + 9 * Node_size + Node.right], 0xFFFFAA55
+    mov dword [nodes + 9 * Node_size + Node.left], 0xFFFFFFFF
+    mov dword [nodes + 9 * Node_size + Node.right], 0xFFFFFFFF
     ; Node 8
     mov dword [nodes + 8 * Node_size + Node.val], '8'
-    mov dword [nodes + 8 * Node_size + Node.left], 0xFFFFAA55
-    mov dword [nodes + 8 * Node_size + Node.right], 0xFFFFAA55
+    mov dword [nodes + 8 * Node_size + Node.left], 0xFFFFFFFF
+    mov dword [nodes + 8 * Node_size + Node.right], 0xFFFFFFFF
     ; Node 7
     mov dword [nodes + 7 * Node_size + Node.val], '9'
-    mov dword [nodes + 7 * Node_size + Node.left], 0xFFFFAA55
-    mov dword [nodes + 7 * Node_size + Node.right], 0xFFFFAA55
+    mov dword [nodes + 7 * Node_size + Node.left], 0xFFFFFFFF
+    mov dword [nodes + 7 * Node_size + Node.right], 0xFFFFFFFF
     ; Node 6
     mov dword [nodes + 6 * Node_size + Node.val], '6'
-    mov dword [nodes + 6 * Node_size + Node.left], 0xFFFFAA55
-    mov dword [nodes + 6 * Node_size + Node.right], 0xFFFFAA55
+    mov dword [nodes + 6 * Node_size + Node.left], 0xFFFFFFFF
+    mov dword [nodes + 6 * Node_size + Node.right], 0xFFFFFFFF
     ; Node 5
     mov dword [nodes + 5 * Node_size + Node.val], '0'
-    mov dword [nodes + 5 * Node_size + Node.left], 0xFFFFAA55
-    mov dword [nodes + 5 * Node_size + Node.right], 0xFFFFAA55
+    mov dword [nodes + 5 * Node_size + Node.left], 0xFFFFFFFF
+    mov dword [nodes + 5 * Node_size + Node.right], 0xFFFFFFFF
     ; Node 4
     mov dword [nodes + 4 * Node_size + Node.val], '1'
     mov dword [nodes + 4 * Node_size + Node.left], nodes + 9 * Node_size
-    mov dword [nodes + 4 * Node_size + Node.right], 0xFFFFAA55
+    mov dword [nodes + 4 * Node_size + Node.right], 0xFFFFFFFF
     ; Node 3
     mov dword [nodes + 3 * Node_size + Node.val], '4'
     mov dword [nodes + 3 * Node_size + Node.left], nodes + 7 * Node_size
